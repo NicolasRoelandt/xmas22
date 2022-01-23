@@ -19,15 +19,17 @@ function App() {
           display: "flex",
         }}
       >
-        <span
+        <img
           style={{
-            position: "sticky",
-            top: 16,
-            left: 32,
+            height: 100,
+            marginLeft: 32,
+            marginRight: 16,
+            marginTop: "auto",
+            marginBottom: "auto",
+            borderRadius: "50%",
           }}
-        >
-          <img style={{ height: 100, borderRadius: "50%" }} src="./Mel.jpeg" />
-        </span>
+          src="./Mel.jpeg"
+        />
         <span
           style={{
             margin: "auto",
