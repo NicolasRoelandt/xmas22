@@ -8,19 +8,14 @@ import fr from "date-fns/locale/fr";
 registerLocale("fr", fr);
 
 export default function _DatePicker({ date, onSelectDate, onSelect }) {
-  const isWeekend = (date) => {
-    const day = date.getDay();
-    return day == 0 || day == 6;
-  };
-
-  const isAfter = (date) => date > new Date("March 25, 2022");
+  const isAfter = (date) => date > new Date("Mar 1, 2023");
 
   return (
     <>
-      <div> Quel weekend ? </div>
+      <div> Choisi la date que tu veux </div>
       <DatePicker
         dateFormat="dd/MM"
-        filterDate={(date) => isWeekend(date) && isAfter(date)}
+        filterDate={(date) => isAfter(date)}
         selected={date}
         onSelect={onSelect}
         onChange={onSelectDate}

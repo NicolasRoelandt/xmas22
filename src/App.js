@@ -1,11 +1,19 @@
 import "./App.css";
 
-import Castle from "./Castle.react";
+import Show from "./Show.react";
 import React from "react";
 import logo from "./logo.svg";
 
 function App() {
   const [giftOpen, setGiftOpen] = React.useState(false);
+  const [donePlaying, setDonePlaying] = React.useState(false);
+
+  React.useEffect(() => {
+    document
+      .querySelector("#music")
+      .addEventListener("ended", () => setDonePlaying(true), false);
+  }, [setDonePlaying]);
+
   return (
     <div className="App">
       <div
@@ -28,7 +36,7 @@ function App() {
             marginBottom: "auto",
             borderRadius: "50%",
           }}
-          src="./Mel.jpeg"
+          src="./MelNoel.jpeg"
         />
         <span
           style={{
@@ -38,21 +46,29 @@ function App() {
             lineHeight: "2em",
           }}
         >
-          Les 31 ans de la Petite Prout
+          Le Noël de la Petite Prout
         </span>
       </div>
       <header className="App-header">
         {giftOpen ? (
-          <Castle />
+          <Show />
         ) : (
           <>
-            <p>Joyeux 31 ans Mel!</p>
-            <p>Clique sur ton cadeau pour l'ouvrir</p>
-            <img
-              onClick={() => setGiftOpen(true)}
-              src="./gift.png"
-              className="App-logo"
-            />
+            <p>Joyeux Noël Mel!</p>
+            <p>Tu veux savoir ton cadeau? Un petit indice:</p>
+            <audio controls id="music">
+              <source src="./mathilda_sound.mp4" type="audio/mpeg" />
+            </audio>
+            {donePlaying && (
+              <>
+                <p>Tu as deviné? Ouvre ton cadeau!</p>
+                <img
+                  onClick={() => setGiftOpen(true)}
+                  src="./gift.png"
+                  className="App-logo"
+                />
+              </>
+            )}
           </>
         )}
       </header>
